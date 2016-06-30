@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+		<title>
+			<%= complete_title(yield(:title)) %>
+		</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Selloff" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Selloff" %>">
@@ -14,7 +17,18 @@
     </header>
     <main role="main">
        <%= render 'layouts/messages' %>
-       <%= yield %>
+			 <div class="container">
+			 	<div class="row">
+					<div class="col-sm-2">
+						<div class="bid-content">
+							<%= render 'layouts/sidebar' %>
+						</div>
+					</div>
+					<div class="col-sm-10">
+							<%= yield %>
+					</div>
+			 	</div>
+			 </div>
     </main>
   </body>
 </html>

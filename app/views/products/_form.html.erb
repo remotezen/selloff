@@ -1,0 +1,17 @@
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :image_url %>
+    <%= f.input :minimum_bid %>
+    <%= f.input :maximum_bid %>
+    <%= f.input :description %>
+    <%= f.input :name %>
+    <%= f.input :category %>
+    <%= f.association :user_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
