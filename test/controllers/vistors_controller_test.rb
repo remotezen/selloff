@@ -3,6 +3,7 @@ require 'test_helper'
 class VisitorsControllerTest < ActionController::TestCase
   context 'GET # index' do
     setup{
+      @user =  users(:one)
       get :index
 
     }

@@ -5,3 +5,10 @@
 # below each fixture, per the syntax in the comments below
 #
 #  column: value
+one:
+  name: Fred Hudson
+  email: Remotezen@bell.net
+  encrypted_password: <%= Devise.bcrypt(User, 'passw0rd!') %>
+
+
+

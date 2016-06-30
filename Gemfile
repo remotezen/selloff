@@ -7,9 +7,9 @@ gem 'devise'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'jbuilder', '~> 2.0'
 group :test do
-  gem 'database_cleaner'
 
   gem 'minitest-rg'
 end
@@ -35,6 +35,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'guard-rails', require: false
 end
 gem 'bootstrap-sass'
 gem 'high_voltage'

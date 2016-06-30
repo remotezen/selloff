@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630154832) do
+ActiveRecord::Schema.define(version: 20160630180608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,17 @@ ActiveRecord::Schema.define(version: 20160630154832) do
   add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "image_url"
-    t.decimal  "minimum_bid", precision: 10, scale: 2
-    t.decimal  "maximum_bid", precision: 10, scale: 2
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.decimal  "minimum_bid",        precision: 10, scale: 2
+    t.decimal  "maximum_bid",        precision: 10, scale: 2
     t.text     "description"
     t.string   "name"
     t.string   "category"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "user_id"
   end
 
@@ -72,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160630154832) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
