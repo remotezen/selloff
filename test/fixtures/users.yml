@@ -8,7 +8,7 @@
 one:
   name: Fred Hudson
   email: Remotezen@bell.net
-  encrypted_password: <%= Devise.bcrypt(User, 'passw0rd!') %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'passw0rd!') %>
 
 
 

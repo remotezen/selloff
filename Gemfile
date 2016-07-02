@@ -19,7 +19,7 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'minitest'
-  gem 'minitest-rails'
+  gem 'guard-minitest'
   gem 'minitest-around'
   gem 'minitest-reporters', '1.0.5'
   gem 'shoulda'

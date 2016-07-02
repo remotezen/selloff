@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Image url</th>
+      <th>Image</th>
       <th>Minimum bid</th>
       <th>Maximum bid</th>
       <th>Description</th>
@@ -19,7 +19,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.image_url %></td>
+        <td><%= product.image %></td>
         <td><%= product.minimum_bid %></td>
         <td><%= product.maximum_bid %></td>
         <td><%= product.description %></td>

@@ -11,6 +11,8 @@ require "minitest/rails/capybara"
 require 'simplecov'
 require 'mocha/mini_test'
 require 'minitest/rails/capybara'
+require 'active_support/testing/assertions'
+include ActiveSupport::Testing::Assertions
 
 SimpleCov.start 'rails' unless ENV['NO_COVERAGE']
 Minitest::Reporters.use!
@@ -22,6 +24,7 @@ Minitest::Reporters.use!
 # require "minitest/pride"
 
 class ActiveSupport::TestCase
+  include ApplicationHelper
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   # Add more helper methods to be used by all tests here...
@@ -33,7 +36,7 @@ class ActionDispatch::IntegrationTest
   fixtures :all
 end
 class ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
   def is_logged_in?
     !session[:user_id].nil?
   end
