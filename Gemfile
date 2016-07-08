@@ -12,20 +12,20 @@ gem 'jbuilder', '~> 2.0'
 group :test do
 
   gem 'minitest-rg'
+  gem 'minitest-reporters', '1.0.5'
+  gem 'guard-minitest'
+  gem 'database_cleaner'
+  gem 'minitest-around'
 end
+
 group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'pry-rails'
 
-  gem 'minitest'
-  gem 'guard-minitest'
-  gem 'minitest-around'
-  gem 'minitest-reporters', '1.0.5'
   gem 'shoulda'
   gem 'shoulda-context'
   gem 'shoulda-matchers'
-  gem 'database_cleaner'
   gem 'minitest-rails-capybara'
   gem 'capybara'
   gem 'simplecov', require: false

@@ -1,8 +1,7 @@
-ENV["RAILS_ENV"] = "test"
+ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
-require "minitest/reporters"
 require 'minitest/autorun'
 require 'support/database_cleaner'
 require 'minitest/rg'
@@ -12,6 +11,8 @@ require 'simplecov'
 require 'mocha/mini_test'
 require 'minitest/rails/capybara'
 require 'active_support/testing/assertions'
+require "minitest/rails/capybara"
+require "rails/test_help"
 include ActiveSupport::Testing::Assertions
 
 SimpleCov.start 'rails' unless ENV['NO_COVERAGE']
@@ -24,9 +25,9 @@ Minitest::Reporters.use!
 # require "minitest/pride"
 
 class ActiveSupport::TestCase
+  fixtures :all
   include ApplicationHelper
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
   # Add more helper methods to be used by all tests here...
 end
 
@@ -35,6 +36,7 @@ class ActionDispatch::IntegrationTest
  include Capybara::Assertions
   fixtures :all
 end
+
 class ActionController::TestCase
   include Devise::Test::ControllerHelpers
   def is_logged_in?

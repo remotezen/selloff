@@ -1,5 +1,5 @@
 require 'test_helper'
-class VisitorIndexTest < ActionDispatch::IntegrationTest
+class VisitorIndexTest < Capybara::Rails::TestCase 
   def test_visitors_index
     visit root_path
     page.assert_selector("h3", text: "Home Page")

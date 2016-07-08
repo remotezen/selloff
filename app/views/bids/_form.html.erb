@@ -1,0 +1,12 @@
+<%= simple_form_for(@bid, :url => bidded_on_path(@product.id), :method => :post) do |f| %>
+<%#-<%= form_errors_for(:bid) %>	
+<%=f.error_notification message: form_error_for(@bid)%>
+
+	<div class="form-inputs">
+		<%= f.number_field :bidded, input_html: {value: nil}, class: 'form-control', 
+	min: minimum(@product), max: maximum(@product)%>
+	</div>
+	<div class="form-actions">
+		<%= f.button :submit %>
+	</div>
+	<% end %>

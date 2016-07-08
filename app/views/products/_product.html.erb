@@ -1,0 +1,25 @@
+<div class="col-md-3 col-md-offset-1 product-column">
+	<%= image_tag product.image, size: "160x100"  %>
+</div>
+<div class="col-md-2 col-md-offset-1 product-column">
+	<h3>
+		Name
+	</h3>
+		<h4>
+			<%= product.name %>
+		</h4>
+		</div>
+
+<div class="col-md-3 col-md-offset-1 product-column">
+	<h3>Description</h3>
+
+	<h5>
+		<%=product.description  %> <%= link_to " Bid", bid_for_path(product), remote: true%>
+		<% unless product.bids.empty? %>
+			<% @product = product %>
+			<%= render 'shared/bid_stats' %>
+			<div id="bid-input-box">
+			</div>
+		<% end %>
+	</h5>
+</div>

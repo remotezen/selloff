@@ -1,54 +1,17 @@
-<div class="col-md-6">
-<div class="photo-box rounded">
-	<p>
-  <%=  image_tag @product.image %>
-	</p>
+<div class="row">
+	<div class="col-sm-4 offset-sm-2">
+	<%= image_tag @product.image %>
+	</div>
+	<div class="col-sm-4">
+		<h3>
+			<%= @product.name %> Description 
+			<div id="bid">
+				<%= render 'shared/bid_stats'%>
+			</div>
+		</h3>
+			<%= link_to "check bid status", current_bid_path(@product.id), remote: true, method: :get%>
+		<%= @product.description %>
+			<%= link_to 'Edit', edit_product_path(@product) %> |
+			<%= link_to 'Back', products_path %>
+	</div>
 </div>
-</div>
-<div class="col-md-6 rounded">
-<p>
-  <span class="product-header doubleUnderline">Minimum bid:
-</span>
-  <span class="product-header" >
-		&nbsp&nbsp&nbsp <span class="mark">
-		<%= @product.minimum_bid %>
-		</span>
-</span>
-</p>
-
-<p>
-<span class="product-header doubleUnderline">
-	Maximum bid:
-</span>
-  <span class="product-header" >
-  	&nbsp&nbsp&nbsp 
-		<span class="mark">
-			<%= @product.maximum_bid %>
-		</span>
-
-</span>
-</p>
-
-<p class="product-description">
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @product.user_id %>
-</p>
-</div>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
