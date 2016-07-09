@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'bids/new/:id' => 'bids#new', as: "bid_for"
-  post 'bids/create/:product_id' => 'bids#create', as: "bidded_on"
+  get 'bids/new'
+  post 'bids/create'
 
-  get 'bids/create'
 
   get 'bids/update'
 

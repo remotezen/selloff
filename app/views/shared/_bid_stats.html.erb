@@ -1,1 +1,25 @@
-<%=@product.highest_bid%> <%=@product.bids.count %> 
+<%= render partial: 'shared/bid_format',  locals: {title: "Highest bid", bid_stat: @product.highest_bid} %>
+<%= render partial: 'shared/bid_format',  locals: {title: "There are", bid_stat: pluralize(@product.bids.count, "bid")} %> 
+<%@name = []%>
+<% @product.bids.each do |b| %>
+	<% @name.push(User.find(b.user_id) ) %>
+<% end %>
+<%sanitize_array(@name).each do |a|%>
+	<%= a.username %>
+<% end %>
+<%#username %>
+<%= render 'shared/bidder'%>
+<%= simple_form_for @bid , url: bids_create_path, validate: true, method: :post  do |f| %>
+	<%= f.error_notification %>
+<%#-<%= form_errors_for(:bid) %>	
+	<div class="form-inputs">
+		<%= f.input_field :bidded, input_html: {value: nil}, error: "check minimum value", 
+			class: 'form-control', min: minimum(@product), max: maximum(@product)%>
+	</div>
+	<div class="form-inputs">
+		<%= f.hidden_field :product_id, value: @product.id %>
+	</div>
+	<div class="form-actions">
+		<%= f.button :submit %>
+	</div>
+	<% end %>

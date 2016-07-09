@@ -4,14 +4,19 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
+  
   def index
     @products = Product.all
+    @bid = Bid.new
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @bid = Bid.new
+
+    @bidders = Bid.where(product_id: params[:id]).limit(5)
   end
 
   # GET /products/new

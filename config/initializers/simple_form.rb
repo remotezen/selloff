@@ -1,4 +1,26 @@
 # Use this setup block to configure all options available in SimpleForm.
+#
+module SimpleForm
+  module Components
+    module Errors
+      def has_errors?
+        has_custom_error? || (object && object.respond_to?(:errors) && errors.present?)
+      end
+
+      def errors
+        @errors ||= has_custom_error? ? [options[:error]] : (errors_on_attribute + errors_on_association).compact
+      end
+    end
+  end
+end
+
+module SimpleForm
+  class ErrorNotification
+    def has_errors?
+      @options[:errors] || (object && object.respond_to?(:errors) && errors.present?)
+    end
+  end
+end
 SimpleForm.setup do |config|
   # Wrappers are used by the form builder to generate a
   # complete input. You can remove any component from the

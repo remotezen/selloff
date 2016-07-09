@@ -11,16 +11,12 @@ class BidsController < ApplicationController
 
   def create
     @bid = current_user.bids.build(bid_params)
-    @bid.update_attribute(:product_id, params[:product_id])
-      respond_to do |format|
-        if @bid.save
-          format.html { redirect_to products_url, notice: ' Your bid has recorded.' }
-          format.json { render :show, status: :created, location: @bid }
-        else
-          format.html{render :new}
-          format.json{render json: @bid.errors, status: :unprocessable_entity}
-        end
-      end
+     if @bid.save
+      redirect_to products_url, notice: ' Your bid has recorded.' 
+     else
+        redirect_to product_path(@bid.product_id), :flash => { :error => @bid.errors.full_messages.join(', ') }
+
+     end
   end
 
 
@@ -41,6 +37,6 @@ class BidsController < ApplicationController
   end
   private
     def bid_params
-      params.require(:bid).permit(:bidded)
+      params.require(:bid).permit(:bidded, :product_id)
     end
 end

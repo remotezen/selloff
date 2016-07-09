@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :bids
   has_many :sellers
   has_many :products
+  
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, 

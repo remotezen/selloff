@@ -7,6 +7,10 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :bids
   
+  def latest_bid_records(n)
+     bids.order(:created_at).last(5)
+  end
+  
   def highest_bid
     bids.maximum(:bidded)
   end

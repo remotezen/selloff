@@ -1,8 +1,0 @@
-<%= simple_form_for(:bid, :url => bidded_on_path(@product.id), :method => :post) do |f| %>
-	<div class="form-inputs">
-		<%= f.text_field :bidded, input_html: {value: nil}, class: 'form-control' %>
-	</div>
-	<div class="form-actions">
-		<%= f.button :submit %>
-	</div>
-	<% end %>

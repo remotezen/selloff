@@ -14,7 +14,7 @@
 	<h3>Description</h3>
 
 	<h5>
-		<%=product.description  %> <%= link_to " Bid", bid_for_path(product), remote: true%>
+		<%=product.description  %> 
 		<% unless product.bids.empty? %>
 			<% @product = product %>
 			<%= render 'shared/bid_stats' %>
