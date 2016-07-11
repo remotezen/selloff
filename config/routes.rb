@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'searches/index'
+
   get 'bids/new'
   post 'bids/create'
 
@@ -11,6 +13,10 @@ Rails.application.routes.draw do
   get 'bids/index'
 
   get 'bids/show/:id' => 'bids#show', as: "current_bid"
+  resources :products do
+    get :autocomplete_product_name, on: :collection
+
+  end
 
   resources :products
 #rails g scaffold campaign name:string account:belongs_to

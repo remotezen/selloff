@@ -1,16 +1,16 @@
-<div class="col-md-3 col-md-offset-1 product-column">
+<div class="col-md-4 product-column">
 	<%= image_tag product.image, size: "160x100"  %>
 </div>
-<div class="col-md-2 col-md-offset-1 product-column">
+<div class="col-md-4  product-column">
 	<h3>
 		Name
 	</h3>
 		<h4>
-			<%= product.name %>
+			<%= link_to product.name, product_path(product) %>
 		</h4>
 		</div>
 
-<div class="col-md-3 col-md-offset-1 product-column">
+<div class="col-md-4 product-column">
 	<h3>Description</h3>
 
 	<h5>
@@ -18,8 +18,6 @@
 		<% unless product.bids.empty? %>
 			<% @product = product %>
 			<%= render 'shared/bid_stats' %>
-			<div id="bid-input-box">
-			</div>
 		<% end %>
 	</h5>
 </div>

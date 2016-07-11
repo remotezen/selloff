@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  autocomplete :product, :name
 
   # GET /products
   # GET /products.json
@@ -15,7 +16,6 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @bid = Bid.new
-
     @bidders = Bid.where(product_id: params[:id]).limit(5)
   end
 

@@ -8,9 +8,19 @@
          src: font-url('OpenSans-Semibold.ttf') format('truetype');
 }
 
+
 body{
 	background: #F5F5F5;
 	font-family: Tohoma;
+}
+
+.ui-autocomplete{
+	padding-top:30px;
+	background:#000;
+	color:#eee;
+	li{
+		list-style-type:none;
+	}
 }
 .rounded {
   border-radius: 10px;

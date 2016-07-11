@@ -17,6 +17,9 @@ module ApplicationHelper
   def minimum(obj)
     obj.minimum_bid
   end
+
+
+  
   
 end
 

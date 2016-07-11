@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '4.2.6'
+gem 'textacular', '~> 3.0'
+gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'client_side_validations'
@@ -10,6 +12,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'jbuilder', '~> 2.0'
+gem 'rails4-autocomplete'
+
 group :test do
 
   gem 'minitest-rg'

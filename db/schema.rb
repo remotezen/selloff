@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702153810) do
+ActiveRecord::Schema.define(version: 20160711122101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "auctions", force: :cascade do |t|
     t.integer  "seller_id"

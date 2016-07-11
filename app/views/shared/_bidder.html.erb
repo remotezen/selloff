@@ -1,6 +1,12 @@
 <%# here is the username %>
-<%@bidders.each do |i| %>
-	<p>
-		<%= i.user.username %>
-	</p>
+<% unless (@bidders.blank? && !user_signed_in?) %>
+	<small>
+		bidders
+	</small>
+	<%@bidders.each do |i| %>
+		<p>
+			<%= render 'shared/bidder_user_name', value: i %>
+		</p>
+	<% end %>
 <% end %>
+
