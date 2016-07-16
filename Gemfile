@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '4.2.6'
+gem 'gon'
 gem 'textacular', '~> 3.0'
 gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
@@ -9,10 +10,11 @@ gem 'client_side_validations'
 gem 'devise'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'turbolinks'
+#gem 'turbolinks'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'jbuilder', '~> 2.0'
 gem 'rails4-autocomplete'
+gem 'execjs' 
 
 group :test do
 

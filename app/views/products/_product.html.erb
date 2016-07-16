@@ -1,23 +1,19 @@
-<div class="col-md-4 product-column">
-	<%= image_tag product.image, size: "160x100"  %>
-</div>
-<div class="col-md-4  product-column">
-	<h3>
-		Name
-	</h3>
-		<h4>
-			<%= link_to product.name, product_path(product) %>
-		</h4>
-		</div>
+	<% @size = "80x60" %>
+	<table class="product-index-table">
+		<tr>
+			<td>
+				<%= product.name %>
+			</td>
+			<td>
+				<%= image_tag product.image, size: @size  %>
+			</td>
+			<td>
+				<%= product.description %>
+			</td>
 
-<div class="col-md-4 product-column">
-	<h3>Description</h3>
+		</tr>
+	</table>
 
-	<h5>
-		<%=product.description  %> 
-		<% unless product.bids.empty? %>
-			<% @product = product %>
-			<%= render 'shared/bid_stats' %>
-		<% end %>
-	</h5>
-</div>
+
+
+

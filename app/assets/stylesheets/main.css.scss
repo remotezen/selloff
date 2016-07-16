@@ -7,6 +7,19 @@
     font-family: 'SemiBold';
          src: font-url('OpenSans-Semibold.ttf') format('truetype');
 }
+#countdown{padding:20px;
+	border:none;
+	font-size:.8em;
+	padding:none;
+	margin:none;
+	color:#222;
+	background:#ccc;
+}
+.product-index-table{
+	margin-top:60px;
+	width: 100%
+
+}
 
 
 body{
@@ -30,6 +43,8 @@ body{
 	background: #fff;
 }
 .product-list{
+	text-align:center;
+	margin-top:60px;
 	.product-header{
 		margin-bottom:2em;
 		margin-top:2em;
@@ -66,7 +81,7 @@ $side-bar-color:#000;
 }
 
 .photo-box{
-	top: 60px;
+	margin-top: 60px;
 	background:#ccc;
 }
 .cell-descriptor{
@@ -83,4 +98,29 @@ $side-bar-color:#000;
 .doubleUnderline {
     text-decoration:underline;
     border-bottom: 1px solid #000;
+}
+.search-list{
+	margin-top:60px;
+	text-align:left;
+	li{
+		list-style-type:none;
+		a{
+			color:#1A0DB7;
+			font-size:1.6em;
+			&:hover{
+				background: white;
+					text-decoration:underline;
+			}
+		}
+		.back-to{
+			a{
+				color: #216c21;
+				font-size:1em;
+
+			}
+			
+		}
+
+	}
+	
 }

@@ -1,1 +1,18 @@
-<%= render @products %>
+<ul class="search-list">
+<% @products.each do |product| %>
+	<li>
+		
+		<%= link_to(product.name, product_path(product)) %>
+		<br>
+		 <span class="back-to">
+				<%= link_to(request.referer, url_for(:back)) %>
+		 </span>
+		<br>
+			<%= product.description %>
+			<br>
+			
+			<%=params[:search]  %>
+	</li>
+	
+	<% end %>
+</ul>

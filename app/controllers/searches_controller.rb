@@ -1,7 +1,8 @@
 class SearchesController < ApplicationController
   def index
-    @products = Product.basic_search(params[:search])
+    @products = Product.fuzzy_search(name: params[:search])
     @bid = Bid.new
-    @search = Search
+    @bidders = []
+
   end
 end

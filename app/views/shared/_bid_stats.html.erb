@@ -1,14 +1,30 @@
-<%= render partial: 'shared/bid_format',  locals: {title: "Highest bid", bid_stat: @product.highest_bid} %>
-<%= render partial: 'shared/bid_format',  locals: {title: "There are", bid_stat: pluralize(@product.bids.count, "bid")} %> 
-<%#username %>
 
+<span id="highest_bid">
+	highest bid
+	<%= @highest_bid %>
+</span>
+<span id="number_of_bids">
+	<%= pluralize @number_of_bids, 'bid' %>
+</span>
+
+<%= render partial: 'shared/time_stats', locals: {time: @product.created_at} %>
+
+<%#username %>
 <%= render 'shared/bidder'%>
 <%= simple_form_for @bid , url: bids_create_path, validate: true, method: :post  do |f| %>
 	<%= f.error_notification %>
 <%#-<%= form_errors_for(:bid) %>	
+<span id="highest_bid">
+	highest bid
+	<%= @highest_bid %>
+</span>
+<span id="number_of_bids">
+	<%= pluralize @number_of_bids, 'bid' %>
+</span>
+
 	<div class="form-inputs">
 		<%= f.input_field :bidded, input_html: {value: nil}, error: "check minimum value", 
-			class: 'form-control', min: minimum(@product), max: maximum(@product)%>
+			class: 'form-control', min: @product.minimum_bid, max: @product.maximum_bid%>
 	</div>
 	<div class="form-inputs">
 		<%= f.hidden_field :product_id, value: @product.id %>
@@ -16,4 +32,5 @@
 	<div class="form-actions">
 		<%= f.button :submit %>
 	</div>
-	<% end %>
+<% end %>
+

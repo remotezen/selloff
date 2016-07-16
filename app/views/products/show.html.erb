@@ -1,17 +1,28 @@
-<div class="row">
-	<div class="col-sm-4 offset-sm-2">
-	<%= image_tag @product.image %>
-	</div>
-	<div class="col-sm-4">
-		<h3>
-			<%= @product.name %> Description 
-			<div id="bid">
-				<%= render 'shared/bid_stats'%>
-			</div>
-		</h3>
-			<%= link_to "check bid status", current_bid_path(@product.id), remote: true, method: :get%>
-		<%= @product.description %>
+	<ul class="product-list">
+		<li>
+			<h1>
+				<%= link_to @product.name, product_path(@product) %>
+			</h1>
+		</li>
+		<li class="photo-box">
+			<%= image_tag @product.image %>
+		</li>
+		<li class="product-description">
+			 <%= @product.description %>
+		</li>
+		<li>
+				<%= render  'shared/bid_stats', locals: {product: @product} %>
+		</li>
+		<li>
 			<%= link_to 'Edit', edit_product_path(@product) %> |
 			<%= link_to 'Back', products_path %>
-	</div>
-</div>
+		</li>
+	</ul>
+
+
+
+
+
+
+
+

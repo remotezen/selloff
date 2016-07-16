@@ -1,0 +1,13 @@
+<%# Time hash days hours minutes  %>
+
+<div id="countdown"></div>
+
+<script >
+	$( document ).ready(function() {
+		//$('#countdown').countdown({until: new Date(2016, 12-1, 25)})
+		$('#countdown').countdown({until: new Date(gon.time_hash.year, gon.time_hash.month, gon.time_hash.day),
+layout: '{sn} {sl}, {mn} {ml}, {hn} {hl}, and {dn} {dl}'
+})
+	});
+
+</script>

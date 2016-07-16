@@ -1,14 +1,16 @@
 class ProductsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   autocomplete :product, :name
 
   # GET /products
   # GET /products.json
-  
+
   def index
     @products = Product.all
     @bid = Bid.new
+    @bidders = []
   end
 
   # GET /products/1
@@ -17,13 +19,20 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @bid = Bid.new
     @bidders = Bid.where(product_id: params[:id]).limit(5)
+    @highest_bid = @product.bids.maximum(:bidded)
+    @number_of_bids = @product.bids.count
+    countdown = set_countdown(@product.created_at, 30)
+    time_hash = date_to_hash(countdown)
+    gon.time_hash = time_hash
+    gon.watch.highest_bid = @highest_bid
+    gon.watch.number_of_bids = @number_of_bids
   end
 
   # GET /products/new
   def new
     @product = Product.new
   end
-  
+
 
   # GET /products/1/edit
   def edit
@@ -77,7 +86,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:image, :minimum_bid, :maximum_bid, 
+      params.require(:product).permit(:image, :minimum_bid, :maximum_bid,
                                       :description, :name, :category, :user_id)
     end
 end
