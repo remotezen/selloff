@@ -1,20 +1,23 @@
 one:
   name: purple watch 
-  maximum_bid: 9.99
-  minimum_bid: 199.99  
+  maximum_bid: 199.99
+  minimum_bid: 5.99  
   category: watches    
   description: blorgh  
   image_file_name: temp_file.jpg
   image_content_type: image/jpeg
   image_file_size: 223312
   image_updated_at: 2015-02-29 10:30:19 
+  id: 1
+
 two:
   name: blue watch 
-  maximum_bid: 9.99
-  minimum_bid: 199.99  
+  maximum_bid: 199.99
+  minimum_bid: 5.99  
   category: watches    
   description: blue watch  
   image_file_name: temp_file.jpg
   image_content_type: image/jpeg
   image_file_size: 223312
   image_updated_at: 2015-02-29 10:30:19 
+  id: 2

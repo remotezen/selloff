@@ -1,10 +1,6 @@
 one:
-  product_id: 1
-  user_id: 1
   bidded: 19.99  
 
 two:    
-  product_id: 1
-  user_id: 1
   bidded: 19.98
 

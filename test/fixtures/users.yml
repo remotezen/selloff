@@ -1,4 +1,5 @@
 one:
   name: Fred Hudson
   email: Remotezen@bell.net
+  username: remotezen
   encrypted_password: <%= Devise::Encryptor.digest(User, 'passw0rd!') %>

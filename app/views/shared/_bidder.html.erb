@@ -3,10 +3,6 @@
 	<small>
 		bidders
 	</small>
-	<%@bidders.each do |i| %>
-		<p>
-			<%= render 'shared/bidder_user_name', value: i %>
-		</p>
+			<%= render partial: 'shared/bidding_user', collection: @bidders , as: :bid || "no bidders"%>
 	<% end %>
-<% end %>
 

@@ -1,26 +1,26 @@
 
-<span id="highest_bid">
-	highest bid
-	<%= @highest_bid %>
-</span>
-<span id="number_of_bids">
-	<%= pluralize @number_of_bids, 'bid' %>
-</span>
-
 <%= render partial: 'shared/time_stats', locals: {time: @product.created_at} %>
 
 <%#username %>
-<%= render 'shared/bidder'%>
+<% unless @bidders.empty? %>
+ <%= render 'shared/bidder' unless @bidders.blank?%>
+<% end %>
+<% unless @highest_bid.blank? %>
+
+	<span id="highest_bid">
+		highest bid
+		<%= @highest_bid %>
+	</span>
+<% end %>
+<% unless @number_of_bid.blank? %>
+	<span id="number_of_bids">
+		<%= pluralize @number_of_bids, 'bid' %>
+	</span>
+<% end %>
+
 <%= simple_form_for @bid , url: bids_create_path, validate: true, method: :post  do |f| %>
 	<%= f.error_notification %>
 <%#-<%= form_errors_for(:bid) %>	
-<span id="highest_bid">
-	highest bid
-	<%= @highest_bid %>
-</span>
-<span id="number_of_bids">
-	<%= pluralize @number_of_bids, 'bid' %>
-</span>
 
 	<div class="form-inputs">
 		<%= f.input_field :bidded, input_html: {value: nil}, error: "check minimum value", 

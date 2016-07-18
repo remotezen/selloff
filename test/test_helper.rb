@@ -32,9 +32,12 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
+ include Devise::Test::IntegrationHelpers
  include Capybara::DSL
  include Capybara::Assertions
   fixtures :all
+
+
 end
 
 class ActionController::TestCase

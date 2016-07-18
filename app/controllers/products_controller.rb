@@ -18,14 +18,20 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @bid = Bid.new
-    @bidders = Bid.where(product_id: params[:id]).limit(5)
-    @highest_bid = @product.bids.maximum(:bidded)
-    @number_of_bids = @product.bids.count
+    unless @product.bids.nil?
+      @bidders = Bid.where(product_id: params[:id]).limit(5)
+      @highest_bid = @product.bids.maximum(:bidded)
+      @number_of_bids = @product.bids.count
+      gon.watch.highest_bid = @highest_bid
+      gon.watch.number_of_bids = @number_of_bids
+    else
+      @bidders = []
+      @highest_bid = 0
+      @number_of_bids = 0
+    end
     countdown = set_countdown(@product.created_at, 30)
     time_hash = date_to_hash(countdown)
     gon.time_hash = time_hash
-    gon.watch.highest_bid = @highest_bid
-    gon.watch.number_of_bids = @number_of_bids
   end
 
   # GET /products/new
