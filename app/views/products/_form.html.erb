@@ -2,11 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :minimum_bid, class: 'form-control' %>
+		<%= f.input :minimum_bid,class: 'form-control', input_html: {size:4, maxlength:10}%>
     <%= f.input :maximum_bid, class: 'form-control' %>
     <%= f.input :description, class: 'form-control' %>
     <%= f.input :name, class: 'form-control' %>
     <%= f.input :category %>
+		<%= f.input :expiration,  as: :datepicker%>
 		<%=f.file_field :image, class: 'btn btn-primary' %>
   </div>
 

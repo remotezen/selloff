@@ -3,3 +3,18 @@ one:
   email: Remotezen@bell.net
   username: remotezen
   encrypted_password: <%= Devise::Encryptor.digest(User, 'passw0rd!') %>
+  seller: true
+
+not_seller:
+  name: Bob Hudson
+  email: Remoteken@bell.net
+  username: remoteken
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'passw0rd!') %>
+  seller: false 
+  
+wrong_seller:
+  name: fast eddie 
+  email: Remoteeddy@bell.net
+  username: remoteeddy 
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'passw0rd!') %>
+  seller: true 

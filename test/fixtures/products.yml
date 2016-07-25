@@ -8,7 +8,6 @@ one:
   image_content_type: image/jpeg
   image_file_size: 223312
   image_updated_at: 2015-02-29 10:30:19 
-  id: 1
 
 two:
   name: blue watch 
@@ -20,4 +19,3 @@ two:
   image_content_type: image/jpeg
   image_file_size: 223312
   image_updated_at: 2015-02-29 10:30:19 
-  id: 2

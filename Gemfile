@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '4.2.6'
+
+gem 'simple-form-datepicker'
 gem 'gon'
 gem 'textacular', '~> 3.0'
 gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'turbolinks'
 gem 'client_side_validations'
 gem 'devise'
 gem 'coffee-rails', '~> 4.1.0'
@@ -16,13 +19,18 @@ gem 'jbuilder', '~> 2.0'
 gem 'rails4-autocomplete'
 gem 'execjs' 
 
+gem 'sprockets', '3.6.3'
+
+
 group :test do
 
   gem 'minitest-rg'
   gem 'minitest-reporters', '1.0.5'
   gem 'guard-minitest'
   gem 'database_cleaner'
+  gem 'launchy'
   gem 'minitest-around'
+  gem 'selenium-webdriver'
 end
 
 group :development, :test do
@@ -34,7 +42,6 @@ group :development, :test do
   gem 'shoulda-context'
   gem 'shoulda-matchers'
   gem 'minitest-rails-capybara'
-  gem 'capybara'
   gem 'simplecov', require: false
   gem 'mocha'
 

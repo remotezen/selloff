@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :user_seller, only: [:new, :edit, :update, :destroy]
+  before_action :correct_seller, only: [:edit, :update, :destroy]
   autocomplete :product, :name
 
   # GET /products
@@ -29,7 +31,7 @@ class ProductsController < ApplicationController
       @highest_bid = 0
       @number_of_bids = 0
     end
-    countdown = set_countdown(@product.created_at, 30)
+    countdown = set_countdown(@product.expiration)
     time_hash = date_to_hash(countdown)
     gon.time_hash = time_hash
   end
@@ -40,8 +42,20 @@ class ProductsController < ApplicationController
   end
 
 
+
   # GET /products/1/edit
   def edit
+    @product = Product.find(params[:id])
+  end
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+      flash[:success] = "Product updated"
+      redirect_to @product
+    else
+
+      render 'edit'
+    end
   end
 
   # POST /products
@@ -86,6 +100,13 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def user_seller
+       redirect_to root_url unless current_user.seller?
+    end
+    def correct_seller
+      product = Product.find(params[:id])
+      redirect_to  root_url unless current_user.id == product.user_id
+    end
     def set_product
       @product = Product.find(params[:id])
     end
@@ -93,6 +114,6 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:image, :minimum_bid, :maximum_bid,
-                                      :description, :name, :category, :user_id)
+                                      :description, :name, :expiration, :category, :user_id)
     end
 end

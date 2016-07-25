@@ -18,3 +18,15 @@
 //= require jquery.plugin
 //= require jquery.countdown
 //= require_tree .
+  $(document).ready(function(){
+$("input.datepicker").each(function(input) {
+  $(this).datepicker({
+    dateFormat: "yy-mm-dd",
+    altField: $(this).next()
+  })
+
+  })
+  });
+//
+
+//

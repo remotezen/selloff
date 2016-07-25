@@ -14,9 +14,12 @@ require 'active_support/testing/assertions'
 require "minitest/rails/capybara"
 require "rails/test_help"
 include ActiveSupport::Testing::Assertions
-
+require 'simplecov'
 SimpleCov.start 'rails' unless ENV['NO_COVERAGE']
-Minitest::Reporters.use!
+#rails g minitest:feature ProductShow
+
+reporter_options = { color: true }
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
 # require "minitest/rails/capybara"
@@ -30,14 +33,16 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   # Add more helper methods to be used by all tests here...
 end
-
-class ActionDispatch::IntegrationTest
+class Capybara::Rails::TestCase
  include Devise::Test::IntegrationHelpers
  include Capybara::DSL
  include Capybara::Assertions
-  fixtures :all
+ fixtures :all
+end
 
-
+class ActionDispatch::IntegrationTest
+ include Devise::Test::IntegrationHelpers
+ fixtures :all
 end
 
 class ActionController::TestCase

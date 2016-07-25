@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
 
-  def set_countdown(t, increase)
+  def set_countdown(t, increase=0)
     razor = 24 * 60 * 60
     incr = razor * increase
     sub = t.to_i + incr
