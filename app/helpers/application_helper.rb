@@ -85,6 +85,14 @@ module ApplicationHelper
 
   end
 
+  def text_success_money(currency)
+    content_tag(:span, number_to_currency(currency), class: 'text-success').html_safe
+  end
+
+  def has_bids?(product)
+    !product.bids.empty?
+  end
+
 
 
 end

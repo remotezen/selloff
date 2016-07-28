@@ -15,6 +15,7 @@ require "minitest/rails/capybara"
 require "rails/test_help"
 include ActiveSupport::Testing::Assertions
 require 'simplecov'
+require 'rails_helper.rb'
 SimpleCov.start 'rails' unless ENV['NO_COVERAGE']
 #rails g minitest:feature ProductShow
 
@@ -40,10 +41,6 @@ class Capybara::Rails::TestCase
  fixtures :all
 end
 
-class ActionDispatch::IntegrationTest
- include Devise::Test::IntegrationHelpers
- fixtures :all
-end
 
 class ActionController::TestCase
   include Devise::Test::ControllerHelpers

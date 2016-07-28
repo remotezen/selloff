@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :user_seller, only: [:new, :edit, :update, :destroy]
   before_action :correct_seller, only: [:edit, :update, :destroy]
+  before_action :has_bids, only: [:edit, :update, :destroy]
   autocomplete :product, :name
 
   # GET /products
@@ -19,6 +20,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @product_attachments = @product.product_attachments
     @bid = Bid.new
     unless @product.bids.nil?
       @bidders = Bid.where(product_id: params[:id]).limit(5)
@@ -62,9 +64,14 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = current_user.products.build(product_params)
-
     respond_to do |format|
       if @product.save
+        unless params[:product_attachemnts].blank?
+          params[:product_attachments]['image'].each do |i|
+            @product_attachment = @product.product_attachments.create!(image: i)
+          end
+        end
+
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -113,7 +120,14 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:image, :minimum_bid, :maximum_bid,
-                                      :description, :name, :expiration, :category, :user_id)
+      params.require(:product).permit(:minimum_bid, :maximum_bid,
+                                      :description, :name, :expiration,
+                                      :category, :user_id,
+                                      product_attachments_attributes: [:id, :product_id, :image])
     end
+    def has_bids
+        @product = Product.find(params[:id])
+        redirect_to @product, info: "this product is being bidded on" if has_bids?(@product)
+    end
+
 end

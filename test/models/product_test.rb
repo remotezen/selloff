@@ -6,6 +6,5 @@ class ProductTest < ActiveSupport::TestCase
     should validate_presence_of :description
     should validate_presence_of :name
     should validate_length_of(:name).is_at_least(3).is_at_most(40)
-
   end
 end

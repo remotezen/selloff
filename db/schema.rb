@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719194315) do
+ActiveRecord::Schema.define(version: 20160726183605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,21 +52,25 @@ ActiveRecord::Schema.define(version: 20160719194315) do
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
   add_index "line_items", ["user_id"], name: "index_line_items_on_user_id", using: :btree
 
+  create_table "product_attachments", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.decimal  "minimum_bid",        precision: 10, scale: 2
-    t.decimal  "maximum_bid",        precision: 10, scale: 2
+    t.decimal  "minimum_bid",       precision: 10, scale: 2
+    t.decimal  "maximum_bid",       precision: 10, scale: 2
     t.text     "description"
     t.string   "name"
     t.string   "category"
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "user_id"
-    t.integer  "bid_taking",                                  default: 1
+    t.integer  "bid_taking",                                 default: 1
     t.datetime "expiration"
+    t.float    "minimum_increment",                          default: 1.0
   end
 
   create_table "sellers", force: :cascade do |t|

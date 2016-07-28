@@ -1,6 +1,7 @@
 class BidsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_bid, only: :create
+  before_action :check_increment, only: [:create]
 
   def new
     @product = Product.find(params[:id])
@@ -57,6 +58,19 @@ class BidsController < ApplicationController
       elsif bidded.to_f >= you_bought_it
         flash[:success] = "You have exceeded the maxmum bid. The item is yours for #{you_bought_it}"
         params[:bid][:bidded] = you_bought_it
+      end
+    end
+
+    def check_increment
+      product_id = params[:bid][:product_id]
+      product = Product.find(product_id)
+      highest = product.highest_bid.to_f
+      bidded = params[:bid][:bidded].to_f
+      increment = product.minimum_increment.to_f
+      sum = increment.to_f + highest.to_f
+      unless bidded >= sum
+        flash[:error] = "Your bid must be at equal to or greater than #{sprintf "%.2f", increment} the highest bid so far"
+        redirect_to products_path
       end
     end
 end

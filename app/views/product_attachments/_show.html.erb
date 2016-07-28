@@ -1,0 +1,15 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @product_attachment.product.name %>
+</p>
+
+<span>
+	<%=link_to image_tag(@product_attachment.image_url),url_for(:back) %>
+</span>
+
+<p>
+	<%= link_to 'Edit', edit_product_attachment_path(@product_attachment) %> |
+	<%= link_to 'Back', url_for(:back) %>
+</p>

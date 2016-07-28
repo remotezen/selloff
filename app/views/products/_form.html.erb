@@ -1,15 +1,20 @@
-<%= simple_form_for(@product) do |f| %>
+<%= simple_form_for(@product, html:{multipart: true}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-		<%= f.input :minimum_bid,class: 'form-control', input_html: {size:4, maxlength:10}%>
+		<%= f.input :minimum_bid,class: 'form-control col-sm-2'%>
     <%= f.input :maximum_bid, class: 'form-control' %>
     <%= f.input :description, class: 'form-control' %>
     <%= f.input :name, class: 'form-control' %>
     <%= f.input :category %>
 		<%= f.input :expiration,  as: :datepicker%>
-		<%=f.file_field :image, class: 'btn btn-primary' %>
   </div>
+		<%= f.simple_fields_for :post_attachments do |p| %>
+			<div class="form-inputs">
+				<%=f.file_field :image, multiple: true, 
+				name: "product_attachments[image][]", class: 'btn btn-primary' %>
+			</div>
+			<% end %>
 
   <div class="form-actions">
     <%= f.button :submit %>

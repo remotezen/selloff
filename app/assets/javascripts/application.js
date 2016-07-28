@@ -17,6 +17,7 @@
 //= require autocomplete-rails
 //= require jquery.plugin
 //= require jquery.countdown
+//= require bootstrap-lightbox
 //= require_tree .
   $(document).ready(function(){
 $("input.datepicker").each(function(input) {

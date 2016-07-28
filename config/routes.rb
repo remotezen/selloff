@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :product_attachments
   get 'searches/index'
 
   get 'bids/new'
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
     :text
     :time
     :timestamp
-=end    
+=end
   devise_for :users
   root to: 'visitors#index'
 

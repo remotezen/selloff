@@ -35,16 +35,15 @@ class ProductsControllerTest < ActionController::TestCase
 
   context "should not create a product if not logged in" do
     setup{
-    assert_no_difference 'Product.count' do
-    post :create,  product:{ name: "shiney new",
-                                         description: "shiney new product",
-                                         image: "shiney_new.jpg",
-                                         category: "miscellanious",
-                                         expiration: "2015-02-29 10:30:19"
+      assert_no_difference 'Product.count' do
+      post :create,  product:{ name: "shiney new",
+                               description: "shiney new product",
+                               category: "miscellanious",
+                               expiration: "2015-02-29 10:30:19",
 
-      }
-    end
-    }
+                              }
+       end
+     }
     should respond_with 302
   end
   context "should create a product if logged in" do
@@ -52,11 +51,12 @@ class ProductsControllerTest < ActionController::TestCase
      sign_in(@user)
      image = fixture_file_upload('images/purple_watch.jpeg', 'image/jpg')
       assert_difference 'Product.count' do
-      post :create, id: @user, product:{ name: "shiney new",
+      post :create, id: @user, product:{   name: "shiney new",
                                            description: "shiney new product",
-                                           image: image,
                                            category: "miscellanious",
-                                           expiration: "2017-02-29 10:30:19"
+                                           expiration: "2017-02-29 10:30:19",
+                                           product_attachments:{image: image}
+
         }
       end
 

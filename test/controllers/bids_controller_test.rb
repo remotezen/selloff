@@ -6,6 +6,7 @@ class BidsControllerTest < ActionController::TestCase
     @product = products(:one)
     @bid_one = bids(:one)
     @bid_two = bids(:two)
+    @other_user = users(:not_seller)
     @higher_bid = @bid_one.bidded + 1
   end
 
@@ -46,5 +47,18 @@ class BidsControllerTest < ActionController::TestCase
     should redirect_to("GET /users/sign_in"){new_user_session_path}
     should set_flash
    end
-
+  context 'should not allow less than incremental bid' do
+    setup{
+      sign_in @user
+      @not_high_enough_bid = @higher_bid + 0.01
+      post :create, bid:{user_id: @user, product_id: @product, bidded: @higher_bid}
+      sign_out @user
+      sign_in @other_user
+      assert_no_difference 'Bid.count' do
+        post :create, bid:{user_id: @other_user, product_id: @product, bidded: @not_high_enough_bid}
+      end
+    }
+    should set_flash
+    should redirect_to('GET products/index'){products_path}
+  end
 end

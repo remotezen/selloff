@@ -5,7 +5,8 @@
 			</h1>
 		</li>
 		<li class="photo-box">
-			<%= image_tag @product.image %>
+			<%# image_tag @product.images %>
+				<%= render @product_attachments %>
 		</li>
 		<li class="product-description">
 			 <%= @product.description %>
@@ -15,6 +16,9 @@
 		</li>
 		<li>
 			<%= link_to 'Edit', edit_product_path(@product) %> |
+			<%unless has_bids?(@product)%>
+				<%= link_to 'Delete', product_path(@product), method: :delete%> |
+				<% end %>
 			<%= link_to 'Back', products_path %>
 		</li>
 	</ul>

@@ -5,12 +5,24 @@
 <% unless @bidders.empty? %>
  <%= render 'shared/bidder' unless @bidders.blank?%>
 <% end %>
-<% unless @highest_bid.blank? %>
+<div class="bid_limits">
+	bid increment
+	<%=  
+		text_success_money(@product.minimum_increment)
+	%>
 
-	<span id="highest_bid">
+	minimum bid
+	<%=  
+		text_success_money(@product.minimum_bid)
+	%>
+	maximum bid
+<%=  
+	text_success_money(@product.maximum_bid)
+	%>
+</div>
+<% unless @highest_bid.blank? %>
 		highest bid
-		<%= @highest_bid %>
-	</span>
+		<%= text_success_money @highest_bid %>
 <% end %>
 <% unless @number_of_bid.blank? %>
 	<span id="number_of_bids">

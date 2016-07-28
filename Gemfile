@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '4.2.6'
+gem 'rmagick'
+gem 'mini_magick'
 
 gem 'simple-form-datepicker'
 gem 'gon'
@@ -14,8 +16,8 @@ gem 'devise'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 #gem 'turbolinks'
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'jbuilder', '~> 2.0'
+gem 'carrierwave'
 gem 'rails4-autocomplete'
 gem 'execjs' 
 
