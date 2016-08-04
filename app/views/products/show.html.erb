@@ -19,7 +19,10 @@
 			<%unless has_bids?(@product)%>
 				<%= link_to 'Delete', product_path(@product), method: :delete%> |
 				<% end %>
-			<%= link_to 'Back', products_path %>
+			<%= link_to 'Back', products_path %> | 
+			<span class="text-success">
+			 <%= link_to 'Watch', watch_path(@product.id) %>
+			</span>
 		</li>
 	</ul>
 

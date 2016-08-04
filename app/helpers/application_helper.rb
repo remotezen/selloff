@@ -93,6 +93,10 @@ module ApplicationHelper
     !product.bids.empty?
   end
 
+  def image_link(img, path)
+    content_tag(:span, link_to(image_tag(img), path))
+  end
+
 
 
 end

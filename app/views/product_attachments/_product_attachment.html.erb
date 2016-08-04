@@ -1,8 +1,10 @@
-<p>
-<%# image_tag(product_attachment.image_url) %>
-<%# product_attachment.inspect %>
-<%= link_to image_tag(product_attachment.image.med.url), product_attachment_path(product_attachment), remote:true %>
+<li>
+<% if action_name == "show"%>
+<%= link_to image_tag(product_attachment.image.medium.url), product_attachment_path(product_attachment), remote:true %>
+<% elsif action_name == "index"%>
+	<%= link_to image_tag(product_attachment.image.thumb.url), product_attachment_path(product_attachment), remote:true %>
+	<% end %>
+</li>
 
-</p>
 <div id="product_images">
 </div>

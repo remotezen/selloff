@@ -55,7 +55,7 @@ class ProductsControllerTest < ActionController::TestCase
                                            description: "shiney new product",
                                            category: "miscellanious",
                                            expiration: "2017-02-29 10:30:19",
-                                           product_attachments:{image: image}
+                                           product_attachments_attributes:[image: image, product_id: 1]
 
         }
       end

@@ -1,0 +1,11 @@
+	<li>
+		<%= link_to(search.name, product_path(search)) %>
+		<br>
+		 <span class="back-to">
+				<%= link_to(request.referer, url_for(:back)) %>
+		 </span>
+		<br>
+			<%= search.description %>
+			<br>
+	</li>
+	<%= search_counter + 1 %>

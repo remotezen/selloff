@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'watches/create/:id' => 'watches#create', as: "watch"
+
+  delete 'watches/destroy/:id' => 'watches#destroy'
+
   resources :product_attachments
   get 'searches/index'
 

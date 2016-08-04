@@ -2,11 +2,17 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-		<%= f.input :minimum_bid,class: 'form-control col-sm-2'%>
+		<span class="bids">
+		<%= f.input :minimum_bid,class: 'form-control '%>
+		</span>
+		<span class="bids">
     <%= f.input :maximum_bid, class: 'form-control' %>
+		</span>
     <%= f.input :description, class: 'form-control' %>
     <%= f.input :name, class: 'form-control' %>
-    <%= f.input :category %>
+		<span class="selection">
+			<%= f.input :category, collection:["Jewellery",'Misc'], class: 'selection' %>
+		</span>
 		<%= f.input :expiration,  as: :datepicker%>
   </div>
 		<%= f.simple_fields_for :post_attachments do |p| %>

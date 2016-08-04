@@ -47,8 +47,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_fill: [50,50]
   end
-  version :med do
-    process resize_to_fill: [100,100]
+  version :medium do
+    process resize_to_fill: [200,200]
   end
 
    def filename

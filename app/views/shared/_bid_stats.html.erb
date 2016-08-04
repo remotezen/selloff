@@ -29,20 +29,23 @@
 		<%= pluralize @number_of_bids, 'bid' %>
 	</span>
 <% end %>
+ <% unless @product.sold? %>
+	<%= simple_form_for @bid , url: bids_create_path, validate: true, method: :post  do |f| %>
+		<%= f.error_notification %>
+	<%#-<%= form_errors_for(:bid) %>	
 
-<%= simple_form_for @bid , url: bids_create_path, validate: true, method: :post  do |f| %>
-	<%= f.error_notification %>
-<%#-<%= form_errors_for(:bid) %>	
-
-	<div class="form-inputs">
-		<%= f.input_field :bidded, input_html: {value: nil}, error: "check minimum value", 
-			class: 'form-control', min: @product.minimum_bid, max: @product.maximum_bid%>
-	</div>
-	<div class="form-inputs">
-		<%= f.hidden_field :product_id, value: @product.id %>
-	</div>
-	<div class="form-actions">
-		<%= f.button :submit %>
-	</div>
-<% end %>
+		<div class="form-inputs input_bid">
+			<%= f.input_field :bidded, input_html: {value: nil}, error: "check minimum value", 
+				class: 'form-control', min: @product.minimum_bid, max: @product.maximum_bid%>
+		</div>
+		<div class="form-inputs">
+			<%= f.hidden_field :product_id, value: @product.id %>
+		</div>
+		<div class="form-actions">
+			<%= f.button :submit %>
+		</div>
+	<% end %>
+<% else %>
+	<p>This item is no longer available for bidding</p>
+	<% end %>
 

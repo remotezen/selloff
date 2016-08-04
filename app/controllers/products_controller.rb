@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
     @products = Product.all
     @bid = Bid.new
     @bidders = []
+    unless current_user.nil?
+      @watches = current_user.watches
+    else
+      @watches = []
+    end
   end
 
   # GET /products/1
@@ -22,6 +27,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product_attachments = @product.product_attachments
     @bid = Bid.new
+    unless current_user.blank?
+      @wacthes = current_user.watches
+    else
+      @watches = []
+    end
     unless @product.bids.nil?
       @bidders = Bid.where(product_id: params[:id]).limit(5)
       @highest_bid = @product.bids.maximum(:bidded)
@@ -66,9 +76,9 @@ class ProductsController < ApplicationController
     @product = current_user.products.build(product_params)
     respond_to do |format|
       if @product.save
-        unless params[:product_attachemnts].blank?
+        unless params[:product_attachments].blank?
           params[:product_attachments]['image'].each do |i|
-            @product_attachment = @product.product_attachments.create!(image: i)
+            @product_attachments_attributes = @product.product_attachments.create!(image: i)
           end
         end
 
@@ -129,5 +139,4 @@ class ProductsController < ApplicationController
         @product = Product.find(params[:id])
         redirect_to @product, info: "this product is being bidded on" if has_bids?(@product)
     end
-
 end

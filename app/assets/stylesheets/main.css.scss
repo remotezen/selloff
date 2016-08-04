@@ -144,3 +144,53 @@ $side-bar-color:#000;
 	 }
 
  }
+ .form-inputs{
+	 text-align:center;
+ }
+ .bids input{
+	 width:150px;
+	 margin: 0 auto;
+	 text-align: center;
+ }
+ .input_bid input{
+	 width:100px;
+	 margin: 0 auto;
+	 text-align:center;
+
+ }
+
+ .selection select{
+	 width:250px;
+	 margin: 0 auto;
+	 text-align: center;
+ }
+
+ .image_container{
+	 h3{
+		vertical-align: middle;
+		display:inline-block;
+	 }
+	 h5{
+		 vertical-align:middle;
+		 display:inline-block;
+		 overflow-y:auto;
+	 }
+	 img{
+		 vertical-align:middle;
+		 display:inline-block;
+	 }
+	 line-height: 60px;
+	 margin-top:8px;
+	 color:#222;
+ }
+ .image_odd{
+	 background:#fff;
+ }
+ .image_even{
+	 background:#eef;
+
+ }
+ .p roduct_image{
+	 height:76px;
+	 
+ }

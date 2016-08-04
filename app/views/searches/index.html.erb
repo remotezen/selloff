@@ -1,18 +1,24 @@
 <ul class="search-list">
-<% @products.each do |product| %>
+
+<% @searches.each do |search| %>
 	<li>
 		
-		<%= link_to(product.name, product_path(product)) %>
+		<%= link_to(search.name, product_path(search)) %>
 		<br>
 		 <span class="back-to">
 				<%= link_to(request.referer, url_for(:back)) %>
 		 </span>
 		<br>
-			<%= product.description %>
+			<%= search.description %>
 			<br>
 			
-			<%=params[:search]  %>
 	</li>
 	
 	<% end %>
+<%= @searches.size %> returned
+
 </ul>
+<ul class="search-list">
+	<%= render partial: 'searches/search',  collection: @searches%>
+</ul>
+
