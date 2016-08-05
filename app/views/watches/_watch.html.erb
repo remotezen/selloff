@@ -1,3 +1,4 @@
-<%= watch.product.name %>
+<li>
+<%=link_to watch.product.name,  product_path(watch.product)%>
 <%= watch.product.highest_bid %>
-<%= pluralize(product.watches.count, 'watching') %>
+</li>

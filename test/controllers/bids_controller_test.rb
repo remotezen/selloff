@@ -55,10 +55,22 @@ class BidsControllerTest < ActionController::TestCase
       sign_out @user
       sign_in @other_user
       assert_no_difference 'Bid.count' do
-        post :create, bid:{user_id: @other_user, product_id: @product, bidded: @not_high_enough_bid}
+        post :create, bid:{user_id: @other_user, product_id: @product, bidded: @not_high_enough_bid
+        }
       end
     }
     should set_flash
     should redirect_to('GET products/index'){products_path}
   end
+  context 'should not create bid without a product_id' do
+    setup{
+      sign_in @user
+      assert_no_difference 'Bid.count' do
+        post :create, bid:{user_id: @user, product_id: 0, bidded: @higher_bid}
+      end
+    }
+
+    should redirect_to('GET products/index'){products_path}
+  end
 end
+

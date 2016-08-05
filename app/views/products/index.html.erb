@@ -1,5 +1,24 @@
 <section class='product_image'>
 	<%= render @products %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<ul class="watches_list"title="currently watching">
+					<u>
+						<strong>Currently watching</strong>
+					</u>
+					<%= render partial: @watches %>
+				</ul>
+			</div>
+		</div>
+	</div>
 </section>
-	<%= link_to 'New Product', new_product_path %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<%= link_to 'New Product', new_product_path %>
+			</div>
+		</div>
+	</div>
+
 

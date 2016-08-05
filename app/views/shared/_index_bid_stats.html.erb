@@ -1,4 +1,8 @@
+
 <%= pluralize(product.bids.count, 'bid') %> so far
 <br>
-highest bid <%= product.bids.maximum(:bidded)%>
+<% unless product.bids.empty? %>
+	highest bid <%= product.bids.maximum(:bidded)%>
+<% end %>
+
 

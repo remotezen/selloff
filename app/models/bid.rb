@@ -2,6 +2,7 @@ class Bid < ActiveRecord::Base
   belongs_to :product
   belongs_to :user
   validates :user_id, presence: true
+  #validates :product_id, presence: true
   validates_numericality_of :bidded
 
 
@@ -22,6 +23,8 @@ class Bid < ActiveRecord::Base
       errors.add(:bidded, "must be greater than  or equal to#{product.minimum_bid}")
     end
   end
+
+
 
   private
     def r_max

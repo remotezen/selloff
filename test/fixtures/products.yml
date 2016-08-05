@@ -5,6 +5,7 @@ one:
   category: watches    
   description: blorgh  
   minimum_increment: 1.00    
+  sold: false  
 
 two:
   name: blue watch 
@@ -13,3 +14,4 @@ two:
   category: watches    
   description: blue watch  
   minimum_increment: 1.00    
+  sold: false  

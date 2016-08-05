@@ -44,9 +44,16 @@ end
 
 class ActionController::TestCase
   include Devise::Test::ControllerHelpers
+  CarrierWave.root = 'test/fixtures/images'
   def is_logged_in?
     !session[:user_id].nil?
   end
+
+class CarrierWave::Mount::Mounter
+  def store!
+    # Not storing uploads in the tests
+  end
+end
 
     # Logs in a test user.
   def log_in_as(user, options = {})

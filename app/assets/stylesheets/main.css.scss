@@ -3,6 +3,11 @@
     	src: font-url('OpenSans-LightItalic.ttf') format('truetype');
 }
 
+@mixin no_style{
+	list-style:none;
+	display: inline-block;
+}
+
 @font-face {
     font-family: 'SemiBold';
          src: font-url('OpenSans-Semibold.ttf') format('truetype');
@@ -190,7 +195,18 @@ $side-bar-color:#000;
 	 background:#eef;
 
  }
- .p roduct_image{
+ .product_image{
 	 height:76px;
+ }
+ .watches_list{
+	 @include no_style;
+	 padding:8px;
+	 a{
+		 size:1.1em;
+		 color:#111;
+	 }
+	 li{padding:8px;}
+
 	 
  }
+

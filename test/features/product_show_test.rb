@@ -30,10 +30,7 @@ class ProductShowTest < Capybara::Rails::TestCase
     assert page.has_css?('.text-success')
     assert page.has_text?(10.10)
     assert page.has_text?(1.00)
-    #assert page.has_text?("1 bid")
-
     assert_equal @product.bids.count, 1
-    #assert page.has_css?('#number_of_bids')
 
   end
 end
