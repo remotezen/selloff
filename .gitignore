@@ -11,6 +11,7 @@
 #----------------------------------------------------------------------------
 
 # bundler state
+coverage
 /.bundle
 /vendor/bundle/
 /vendor/ruby/

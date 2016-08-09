@@ -33,6 +33,7 @@ group :test do
   gem 'launchy'
   gem 'minitest-around'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
@@ -44,7 +45,6 @@ group :development, :test do
   gem 'shoulda-context'
   gem 'shoulda-matchers'
   gem 'minitest-rails-capybara'
-  gem 'simplecov', require: false
   gem 'mocha'
 
 end

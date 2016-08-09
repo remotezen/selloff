@@ -14,9 +14,16 @@ require 'active_support/testing/assertions'
 require "minitest/rails/capybara"
 require "rails/test_help"
 include ActiveSupport::Testing::Assertions
-require 'simplecov'
 require 'rails_helper.rb'
-SimpleCov.start 'rails' unless ENV['NO_COVERAGE']
+
+namespace :test do
+  task :coverage do
+    require 'simplecov'
+    SimpleCov.start 'rails' # feel free to pass block
+    Rake::Task["test"].execute
+  end
+end
+
 #rails g minitest:feature ProductShow
 
 reporter_options = { color: true }

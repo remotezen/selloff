@@ -1,6 +1,8 @@
 <div class="row image_container <%= cycle('image_odd', 'image_even') %>"> 
 <div class="col-md-4">
+	<%unless product.product_attachments.empty?%>
 			<%=image_link product.product_attachments[0].image.medium.url, product_path(product)%>
+			<% end %>
 		</div>
 		<div class="col-md-4">
 			<h3>
